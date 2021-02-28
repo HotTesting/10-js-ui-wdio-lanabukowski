@@ -90,7 +90,7 @@ export const config: WebdriverIO.Config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://ip-6147.proline.net.ua:10082/',
+    baseUrl: 'https://demo.opencart.com/index.php',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
