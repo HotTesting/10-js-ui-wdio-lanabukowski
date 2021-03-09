@@ -3,10 +3,9 @@ describe('Website', () => {
     it('Should be alive', () => {
         browser.url('/');
         expect($('#logo')).toBeDisplayed();
-        browser.pause(10000);
     });
     it('should allow user to register', () => {
-        browser.url('https://demo.opencart.com/index.php?route=account/register');
+        browser.url('index.php?route=account/register');
         const content = $('#content');
         const firstName = $('#input-firstname');
         firstName.setValue('Test');
@@ -30,7 +29,7 @@ describe('Website', () => {
 
 describe("Product return", () => {
     it("can be submited", () => {
-        browser.url('https://demo.opencart.com/index.php?route=account/return/add');
+        browser.url('index.php?route=account/return/add');
         const firstName = $('#input-firstname');
         firstName.setValue('Test');
         const lastName = $('#input-lastname');
@@ -57,13 +56,13 @@ describe("Product return", () => {
         comment.setValue('text')
         const submit = $('input[value="Submit"]');
         submit.click();
-        expect(browser).toHaveUrl('https://demo.opencart.com/index.php?route=account/return/success')
+        expect(browser).toHaveUrlContaining('success')
     });
 });
 
 describe("Gift Certificate", () => {
     it("can be purchased", () => {
-        browser.url('https://demo.opencart.com/index.php?route=account/voucher');
+        browser.url('index.php?route=account/voucher');
         const recipientName = $('#input-to-name');
         recipientName.setValue('recipient');
         const recipientEmail = $('#input-to-email');
@@ -82,13 +81,13 @@ describe("Gift Certificate", () => {
         checkbox.click();
         const submit = $('input[type="Submit"]');
         submit.click()
-        expect(browser).toHaveUrl('https://demo.opencart.com/index.php?route=account/voucher/success')
+        expect(browser).toHaveUrlContaining('success')
     });
 });
 
 describe("Contact us form", () => {
     it("must send messages to shop administration", () => {
-        browser.url('https://demo.opencart.com/index.php?route=information/contact');
+        browser.url('index.php?route=information/contact');
         const name = $('#input-name');
         name.setValue('Test');
         const email = $('#input-email');
@@ -97,13 +96,13 @@ describe("Contact us form", () => {
         enquiry.setValue('testtesttest');
         const submit = $('input[type="Submit"]');
         submit.click();
-        expect(browser).toHaveUrl('https://demo.opencart.com/index.php?route=information/contact/success')
+        expect(browser).toHaveUrlContaining('success')
     });
 });
 
 describe("Items search", function() {
     it("should show results in case multiple items matches", () => {
-        browser.url('https://demo.opencart.com/index.php?route=common/home');
+        browser.url('index.php?route=common/home');
         const search = $('input[placeholder="Search"]');
         search.setValue('iMac');
         browser.keys('Enter');
@@ -112,7 +111,7 @@ describe("Items search", function() {
     });
   
     it("should redirect to 'no matching results' in case no items matched", () => {
-        browser.url('https://demo.opencart.com/index.php?route=common/home');
+        browser.url('index.php?route=common/home');
         const search = $('input[placeholder="Search"]');
         search.setValue('text');
         browser.keys('Enter');
