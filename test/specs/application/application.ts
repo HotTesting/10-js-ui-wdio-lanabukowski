@@ -4,6 +4,8 @@ import { GiftCertificatePage } from "./pages/giftCertificate.page";
 import { ContactUsPage } from "./pages/contactUs.page";
 import { ProductCategoryPage } from "./pages/productCategory.page";
 import { CheckoutPage } from "./pages/checkout/index";
+import {Navbar} from './pages/components/navbar.component';
+
 
 export class App {
     registration: RegisterAccountPage
@@ -12,6 +14,7 @@ export class App {
     contact: ContactUsPage
     category: ProductCategoryPage
     checkout: CheckoutPage
+    navbar: Navbar
 
     constructor() {
         this.registration = new RegisterAccountPage()
@@ -20,5 +23,6 @@ export class App {
         this.contact = new ContactUsPage()
         this.category = new ProductCategoryPage()
         this.checkout = new CheckoutPage()
+        this.navbar = new Navbar()
     }
 }

@@ -1,13 +1,11 @@
 import {App} from './application/application';
-import {Navbar} from './application/pages/components/navbar.component'
 
 const app = new App();
-const navbar = new Navbar();
 
 describe("Checkout by Guest", function() {
     before(function () {
         browser.url('/');
-        navbar.openCategory('MP3 Players');
+        app.navbar.openCategory('MP3 Players');
         const iPodShuffle = app.category.products.find(product => product.title() === 'iPod Shuffle')
         expect(iPodShuffle).toBeDefined()
         iPodShuffle.addToCart();
@@ -44,7 +42,7 @@ describe("Checkout by Guest", function() {
 describe("Checkout by register account", function() {
     before(function () {
         browser.url('/');
-        navbar.openCategory('MP3 Players');
+        app.navbar.openCategory('MP3 Players');
         const iPodShuffle = app.category.products.find(product => product.title() === 'iPod Shuffle')
         expect(iPodShuffle).toBeDefined()
         iPodShuffle.addToCart();
