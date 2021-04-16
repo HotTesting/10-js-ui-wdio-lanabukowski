@@ -1,4 +1,7 @@
-export const config: WebdriverIO.Config = {
+const configToExport = {
+    // automationProtocol: 'devtools',
+    hostname: undefined,
+    path: undefined,
     //
     // ====================
     // Runner Configuration
@@ -275,3 +278,19 @@ export const config: WebdriverIO.Config = {
     //onReload: function(oldSessionId, newSessionId) {
     //}
 }
+
+if (process.env.DEBUG == '1') {
+    console.log('==== RUNNING IN DEBUG MODE ====')
+    configToExport.mochaOpts.timeout = 9999999
+    //configToExport.logLevel = 'trace'
+    configToExport.capabilities[0].maxInstances = 1
+}
+
+if (process.env.CI == 'true') {
+    configToExport.logLevel = 'error'
+    configToExport.services = configToExport.services.filter(service => service !== 'chromedriver')
+    configToExport.hostname = 'localhost'
+    configToExport.path = '/wd/hub'
+}
+
+export const config = configToExport
